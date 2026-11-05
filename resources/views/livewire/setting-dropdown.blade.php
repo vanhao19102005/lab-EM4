@@ -1,6 +1,23 @@
 <div class="relative" x-data="{open:false,selectedTheme:@js($theme),selectedLocale:@js($locale)}" @keydown.escape.window="open=false">
     <button type="button" @click="open=!open" :aria-expanded="open" aria-label="{{ __('Settings') }}" class="grid size-10 place-items-center rounded-full text-on-surface-700 hover:bg-primary-100"><svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm8 3.5-.9-.5a7.3 7.3 0 0 0-.6-1.5l.3-1a1 1 0 0 0-.2-1l-.9-.9a1 1 0 0 0-1-.2l-1 .3a7.3 7.3 0 0 0-1.5-.6l-.5-.9a1 1 0 0 0-.9-.6h-1.3a1 1 0 0 0-.9.6l-.5.9a7.3 7.3 0 0 0-1.5.6l-1-.3a1 1 0 0 0-1 .2l-.9.9a1 1 0 0 0-.2 1l.3 1a7.3 7.3 0 0 0-.6 1.5l-.9.5a1 1 0 0 0-.6.9v1.3a1 1 0 0 0 .6.9l.9.5a7.3 7.3 0 0 0 .6 1.5l-.3 1a1 1 0 0 0 .2 1l.9.9a1 1 0 0 0 1 .2l1-.3a7.3 7.3 0 0 0 1.5.6l.5.9a1 1 0 0 0 .9.6h1.3a1 1 0 0 0 .9-.6l.5-.9a7.3 7.3 0 0 0 1.5-.6l1 .3a1 1 0 0 0 1-.2l.9-.9a1 1 0 0 0 .2-1l-.3-1a7.3 7.3 0 0 0 .6-1.5l.9-.5a1 1 0 0 0 .6-.9v-1.3a1 1 0 0 0-.6-.9Z"/></svg></button>
-    <div x-show="open" x-cloak x-transition.origin.top.right @click.outside="open=false" class="absolute right-0 z-40 mt-2 w-64 rounded-xl border border-black/10 bg-surface p-3 shadow-xl">
+    <div x-show="open" x-cloak x-transition.origin.top.right @click.outside="open=false" class="absolute right-0 z-40 mt-2 w-72 rounded-xl border border-black/10 bg-surface p-3 shadow-xl">
+        @auth
+            <div class="border-b border-black/10 px-3 pb-3">
+                <p class="truncate font-semibold text-on-surface-700">{{ auth()->user()->name }}</p>
+                <p class="truncate text-xs text-on-surface-500">{{ auth()->user()->email }}</p>
+            </div>
+            <nav class="grid gap-1 border-b border-black/10 py-2 text-sm">
+                <a href="{{ route('dashboard') }}" class="rounded-lg px-3 py-2 text-on-surface-600 hover:bg-primary-50">{{ __('Dashboard') }}</a>
+                <a href="{{ route('profile.edit') }}" class="rounded-lg px-3 py-2 text-on-surface-600 hover:bg-primary-50">{{ __('Profile Settings') }}</a>
+                <a href="{{ route('apiTokens.index') }}" class="rounded-lg px-3 py-2 text-on-surface-600 hover:bg-primary-50">{{ __('API Tokens') }}</a>
+                <form method="POST" action="{{ route('logout') }}">@csrf<button class="w-full rounded-lg px-3 py-2 text-left text-red-600 hover:bg-red-50" type="submit">{{ __('Log Out') }}</button></form>
+            </nav>
+        @else
+            <div class="grid gap-1 border-b border-black/10 py-2 text-sm">
+                <a href="{{ route('login') }}" class="rounded-lg px-3 py-2 text-on-surface-600 hover:bg-primary-50">{{ __('Log In') }}</a>
+                <a href="{{ route('register') }}" class="rounded-lg px-3 py-2 text-on-surface-600 hover:bg-primary-50">{{ __('Register') }}</a>
+            </div>
+        @endauth
         <p class="px-3 py-2 text-xs font-bold uppercase tracking-wider text-on-surface-500">{{ __('Themes') }}</p>
         <button type="button" @click="selectedTheme='theme-light';$wire.setTheme('theme-light')" class="block w-full rounded-lg px-3 py-2 text-left text-on-surface-600 hover:bg-primary-50">☀ {{ __('Light') }}</button>
         <button type="button" @click="selectedTheme='theme-dark';$wire.setTheme('theme-dark')" class="block w-full rounded-lg px-3 py-2 text-left text-on-surface-600 hover:bg-primary-50">☾ {{ __('Dark') }}</button>
