@@ -1,0 +1,10 @@
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #111916;
+  --ink: #f4f4ef;
+  --primary: #4ade80;
+}
+:root[data-theme="dark"] .bg-white { background-color: #1c2520; }
+:root[data-theme="dark"] .bg-zinc-50 { background-color: #222b26; }
+:root[data-theme="dark"] .text-zinc-500, :root[data-theme="dark"] .text-zinc-600 { color: #c1c9c3; }
+:root[data-theme="dark"] .border-zinc-200, :root[data-theme="dark"] .border-zinc-300 { border-color: #46534b; }
