@@ -1,10 +1,11 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --surface: #111916;
-  --ink: #f4f4ef;
-  --primary: #4ade80;
+  --color-primary-50: #e5f7ed; --color-primary-100: #c8eed8; --color-primary-200: #94ddb5;
+  --color-primary-300: #61cc92; --color-primary-400: #3fbd79; --color-primary-500: #26a965;
+  --color-primary-600: #1c8c55; --color-primary-700: #176f45; --color-primary-800: #14583a;
+  --color-primary-900: #10452f; --color-primary-950: #08271b;
+  --color-surface: #1c2520; --color-background: #111916; --color-on-background: #f4f4ef;
+  --color-on-surface-50: #111916; --color-on-surface-100: #e8eee9; --color-on-surface-200: #d5ded8;
+  --color-on-surface-300: #bac8bf; --color-on-surface-400: #a3b2a9; --color-on-surface-500: #c1c9c3;
+  --color-on-surface-600: #e1e8e3; --color-on-surface-700: #f0f4f1; --color-on-surface-800: #ffffff;
 }
-:root[data-theme="dark"] .bg-white { background-color: #1c2520; }
-:root[data-theme="dark"] .bg-zinc-50 { background-color: #222b26; }
-:root[data-theme="dark"] .text-zinc-500, :root[data-theme="dark"] .text-zinc-600 { color: #c1c9c3; }
-:root[data-theme="dark"] .border-zinc-200, :root[data-theme="dark"] .border-zinc-300 { border-color: #46534b; }

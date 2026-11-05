@@ -3,5 +3,16 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+@theme {
+  --color-primary-50: #eefbf2; --color-primary-100: #d6f5de; --color-primary-200: #b0eac2;
+  --color-primary-300: #7cd99e; --color-primary-400: #47c078; --color-primary-500: #219653;
+  --color-primary-600: #168548; --color-primary-700: #126a3d; --color-primary-800: #115431;
+  --color-primary-900: #0f452a; --color-primary-950: #072718;
+  --color-surface: #ffffff; --color-background: #eefbf2;
+  --color-on-background: #102519;
+  --color-on-surface-50: #ffffff; --color-on-surface-100: #303030; --color-on-surface-200: #dcdcdc;
+  --color-on-surface-300: #bdbdbd; --color-on-surface-400: #989898; --color-on-surface-500: #696969;
+  --color-on-surface-600: #444343; --color-on-surface-700: #303030; --color-on-surface-800: #202020;
+}
 [x-cloak] { display: none !important; }
 html { scroll-behavior: smooth; }

@@ -1,0 +1,2 @@
+@props(['label', 'name', 'value' => 1])
+<label class="inline-flex items-center gap-2 text-sm text-on-surface-600"><input {{ $attributes->merge(['class' => 'size-4 rounded border-zinc-300 text-primary-600 focus:ring-primary-500']) }} type="checkbox" name="{{ $name }}" value="{{ $value }}" @checked(old($name))><span>{{ $label }}</span></label>@error($name)<span class="mt-1 text-xs text-red-600">{{ $message }}</span>@enderror
