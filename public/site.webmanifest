@@ -1,1 +1,16 @@
-{"name":"Bean & Bloom Coffee Shop","short_name":"Bean & Bloom","start_url":"/","display":"standalone","background_color":"#f7f7f2","theme_color":"#166534","icons":[]}
+{
+  "name": "Bean & Bloom Coffee Shop",
+  "short_name": "Bean & Bloom",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#eefbf2",
+  "theme_color": "#168548",
+  "icons": [
+    {
+      "src": "/coffee-shop-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

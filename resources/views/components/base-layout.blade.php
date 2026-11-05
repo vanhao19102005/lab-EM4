@@ -7,7 +7,7 @@
 <html lang="{{ $locale }}" class="{{ $theme }}" data-theme="{{ $theme === 'theme-dark' ? 'dark' : 'light' }}">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#219653"><link rel="manifest" href="{{ asset('site.webmanifest') }}">
+    <meta name="theme-color" content="#168548"><link rel="icon" type="image/svg+xml" href="{{ asset('coffee-shop-icon.svg') }}"><link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <title>{{ $pageTitle }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles @stack('styles')

@@ -1,11 +1,15 @@
 <?php
+
 namespace App\Livewire\Checkout;
+
 use App\Events\BrowserEvent;
 use App\Events\LivewireEvent;
 use App\Models\Product;
 use App\Services\CartService;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\On;
 use Livewire\Component;
+
 class AddCartItemPopup extends Component
 {
     public ?Product $product = null;
@@ -24,6 +28,7 @@ class AddCartItemPopup extends Component
             $this->notes = $item->notes ?? '';
         }
         $this->dispatch(BrowserEvent::DISPLAY_OFFCANVAS);
+        Log::channel('user_actions')->info('User clicked on product', ['product_id' => $product_id]);
     }
 
     public function increment(): void { $this->quantity = min(99, $this->quantity + 1); }
@@ -33,13 +38,15 @@ class AddCartItemPopup extends Component
     {
         $this->validate(['quantity' => ['required', 'integer', 'min:1', 'max:99'], 'notes' => ['nullable', 'string', 'max:500']]);
         abort_if(! $this->product, 404);
-        $cart->addCartItem([
+        $cartItem = [
             'product_id' => $this->product->id,
             'quantity' => $this->quantity,
             'notes' => $this->notes,
-        ]);
+        ];
+        $cart->addCartItem($cartItem);
         $this->dispatch(LivewireEvent::CART_UPDATED_EVENT);
         $this->dispatch(BrowserEvent::CLOSE_OFFCANVAS);
+        Log::channel('user_actions')->info('User added product to cart', ['cart_item' => $cartItem]);
     }
 
     public function render() { return view('livewire.checkout.add-cart-item-popup'); }
